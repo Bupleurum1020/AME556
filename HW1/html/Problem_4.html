@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>Problem_4</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-09-19">
+<meta name="DC.source" content="Problem_4.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#2">(a) Triangle</a>
+</li>
+<li>
+<a href="#3">(b) rotate pi/6 about x-axis</a>
+</li>
+<li>
+<a href="#4">(c) rotate -pi/4 about y-axis</a>
+</li>
+<li>
+<a href="#5">(d) rotate 2pi/3 about z-axis</a>
+</li>
+<li>
+<a href="#6">(e) rotate back</a>
+</li>
+<li>
+<a href="#7">rotation function</a>
+</li>
+</ul>
+</div>
+<pre class="codeinput">clc;
+clear;
+close <span class="string">all</span>;
+</pre>
+<h2 id="2">(a) Triangle</h2>
+<pre class="codeinput">A0 = [0; 0; 0];
+B0 = [2; 0; 0];
+C0 = [0; 1; 0];
+triangle0 = [A0, B0, C0];
+
+figure;
+view(3);
+axis <span class="string">equal</span>;
+grid <span class="string">on</span>;
+patch(triangle0(1, :), triangle0(2, :), triangle0(3, :), <span class="string">'blue'</span>);
+xlabel(<span class="string">'X'</span>);
+ylabel(<span class="string">'Y'</span>);
+zlabel(<span class="string">'Z'</span>);
+title(<span class="string">'Original Triangle ABC'</span>);
+
+xlim([-2 2]);
+ylim([-2 2]);
+zlim([-2 2]);
+</pre>
+<img vspace="5" hspace="5" src="Problem_4_01.png" alt=""> <h2 id="3">(b) rotate pi/6 about x-axis</h2>
+<pre class="codeinput">R1 = eul2rotm([pi/6, 0, 0], <span class="string">'XYZ'</span>);
+triangle1 = rotateTriangle(triangle0, R1);
+</pre>
+<img vspace="5" hspace="5" src="Problem_4_02.png" alt=""> <h2 id="4">(c) rotate -pi/4 about y-axis</h2>
+<pre class="codeinput">R2 = eul2rotm([0, -pi/4, 0], <span class="string">'XYZ'</span>);
+triangle2 = rotateTriangle(triangle1, R2);
+</pre>
+<img vspace="5" hspace="5" src="Problem_4_03.png" alt=""> <h2 id="5">(d) rotate 2pi/3 about z-axis</h2>
+<pre class="codeinput">R3 = eul2rotm([0, 0, 2*pi/3], <span class="string">'XYZ'</span>);
+triangle3 = rotateTriangle(triangle2, R3);
+</pre>
+<img vspace="5" hspace="5" src="Problem_4_04.png" alt=""> <h2 id="6">(e) rotate back</h2>
+<pre class="codeinput">R_total = R3 * R2 * R1;
+R_inverse = inv(R_total);
+
+triangle4 = rotateTriangle(triangle3, R_inverse);
+</pre>
+<h2 id="7">rotation function</h2>
+<pre class="codeinput">
+<span class="keyword">function</span> rotatedTriangle = rotateTriangle(triangle, R)
+
+    rotatedTriangle = R * triangle;
+
+    <span class="comment">% plot</span>
+    figure;
+    view(3);
+    axis <span class="string">equal</span>;
+    grid <span class="string">on</span>;
+    patch(rotatedTriangle(1, :), rotatedTriangle(2, :), rotatedTriangle(3, :), <span class="string">'red'</span>);
+    xlabel(<span class="string">'X'</span>);
+    ylabel(<span class="string">'Y'</span>);
+    zlabel(<span class="string">'Z'</span>);
+    title(<span class="string">'Triangle Rotated using Rotation Matrix'</span>);
+
+    xlim([-2 2]);
+    ylim([-2 2]);
+    zlim([-2 2]);
+<span class="keyword">end</span>
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+clc;
+clear;
+close all;
+
+%% (a) Triangle
+A0 = [0; 0; 0];
+B0 = [2; 0; 0];
+C0 = [0; 1; 0];
+triangle0 = [A0, B0, C0]; 
+
+figure;
+view(3);
+axis equal; 
+grid on;
+patch(triangle0(1, :), triangle0(2, :), triangle0(3, :), 'blue'); 
+xlabel('X');
+ylabel('Y');
+zlabel('Z');
+title('Original Triangle ABC');
+
+xlim([-2 2]);
+ylim([-2 2]);
+zlim([-2 2]);
+
+%% (b) rotate pi/6 about x-axis
+R1 = eul2rotm([pi/6, 0, 0], 'XYZ'); 
+triangle1 = rotateTriangle(triangle0, R1);
+
+%% (c) rotate -pi/4 about y-axis
+R2 = eul2rotm([0, -pi/4, 0], 'XYZ'); 
+triangle2 = rotateTriangle(triangle1, R2);
+
+%% (d) rotate 2pi/3 about z-axis
+R3 = eul2rotm([0, 0, 2*pi/3], 'XYZ'); 
+triangle3 = rotateTriangle(triangle2, R3);
+
+%% (e) rotate back
+R_total = R3 * R2 * R1;
+R_inverse = inv(R_total);
+
+triangle4 = rotateTriangle(triangle3, R_inverse);
+
+%% rotation function
+function rotatedTriangle = rotateTriangle(triangle, R)
+
+    rotatedTriangle = R * triangle;
+
+    % plot
+    figure;
+    view(3); 
+    axis equal;
+    grid on;
+    patch(rotatedTriangle(1, :), rotatedTriangle(2, :), rotatedTriangle(3, :), 'red'); 
+    xlabel('X');
+    ylabel('Y');
+    zlabel('Z');
+    title('Triangle Rotated using Rotation Matrix');
+    
+    xlim([-2 2]);
+    ylim([-2 2]);
+    zlim([-2 2]);
+end
+
+##### SOURCE END #####
+-->
+</body>
+</html>
